@@ -62,5 +62,5 @@ func (r Rates) getRates() (RatesQuotedResponse, error)  {
 }
 
 func GetCurrentRates(rates AccessRates) (RatesQuotedResponse, error) {
-	return rates.GetRates()
+	return rates.getRates()
 }
