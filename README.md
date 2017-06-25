@@ -10,5 +10,9 @@ Given input USD then user will see rates from CAD, AUD, SGD, NZD and IDR
 
 # Notes
 * Currency API [fixer.io](http://fixer.io/)
+* Http Mock [httpmock](https://github.com/jarcoal/httpmock)
 * Unit test API [testify](https://github.com/stretchr/testify)
 * BDD API [gucumber](https://github.com/gucumber/gucumber)
+
+# References
+* https://medium.com/@PurdonKyle/building-a-unit-testable-api-in-golang-b42ff1fcbae7
