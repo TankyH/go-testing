@@ -8,6 +8,11 @@ As a user I want to see latest currency rates in order to exchange my current cu
 #### Acceptance Criteria
 Given input USD then user will see rates from CAD, AUD, SGD, NZD and IDR
 
+# Running
+
+    $ cd $GOPATH/src/github.com/ru-rocker/go-testing
+    $ gucumber
+
 # Notes
 * Currency API [fixer.io](http://fixer.io/)
 * Http Mock [httpmock](https://github.com/jarcoal/httpmock)

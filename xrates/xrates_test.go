@@ -17,15 +17,16 @@ func TestGetRatesReturn200(t *testing.T) {
 	defer httpmock.DeactivateAndReset()
 
 	responder := httpmock.NewStringResponder(200, `{
-		"base":"USD",
-		"date":"2016-06-23",
-		"rates":{"AUD":1.3214,
-			 "CAD":1.3231,
-			 "IDR":13305.0,
-			 "NZD":1.3734,
-			 "SGD":1.3869
-			 }
-		}`)
+		"base": "USD",
+		"date": "2016-06-23",
+		"rates": {
+			"AUD": 1.3214,
+			"CAD": 1.3231,
+			"IDR": 13305.0,
+			"NZD": 1.3734,
+			"SGD": 1.3869
+		}
+	}`)
 
 	rates := Rates{
 		Request: RatesQuotedRequest{Base: "USD"},
@@ -37,13 +38,12 @@ func TestGetRatesReturn200(t *testing.T) {
 
 	assert.Equal("USD", resp.Base, "Base Currency")
 	assert.Equal("2016-06-23", resp.Date, "Exchange Date")
-	assert.Equal(float32(1.3214), resp.Rates["AUD"],"Australian X-Rate")
-	assert.Equal(float32(13305.0), resp.Rates["IDR"],"Indonesian X-Rate")
+	assert.Equal(float32(1.3214), resp.Rates["AUD"], "Australian X-Rate")
+	assert.Equal(float32(13305.0), resp.Rates["IDR"], "Indonesian X-Rate")
 
 }
 
 func TestGetRatesErrorJSONFormat(t *testing.T) {
-	//assert := assert.New(t)
 
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
@@ -65,7 +65,6 @@ func TestGetRatesErrorJSONFormat(t *testing.T) {
 }
 
 func TestGetRatesEmptyBody(t *testing.T) {
-	//assert := assert.New(t)
 
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
@@ -111,7 +110,7 @@ func TestFunctionGetCurrentRates(t *testing.T) {
 	}
 
 	rmock := new(ratesMock)
-	rmock.On("GetRates").Return(ar, nil)
+	rmock.On("getRates").Return(ar, nil)
 	resp, err := GetCurrentRates(rmock)
 
 	assert.Nil(err, "no error")
